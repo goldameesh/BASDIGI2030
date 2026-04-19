@@ -146,6 +146,34 @@ export default function AcademyPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             
+            {/* Programme 0 - AI Basics - LIVE */}
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once:true }} variants={fadeUp} className="glass-card p-8 rounded-2xl border-[1.5px] border-[#C9A84C] relative flex flex-col">
+              <div className="mb-6 flex justify-start">
+                <span className="bg-[#C9A84C] text-[#0B1B4D] font-inter text-[12px] uppercase tracking-[0.1em] px-3 py-1 font-bold rounded-full">
+                  FOUNDATION · OPEN NOW
+                </span>
+              </div>
+              <h3 className="font-playfair text-[24px] text-white font-semibold mb-3">AI Basics for Professionals</h3>
+              <p className="font-inter text-[15px] text-[#CBD5E1] leading-[1.7] mb-6 flex-1">
+                A fast-paced, jargon-free introduction to Artificial Intelligence. Built for executives and teams who need to understand the 'Why' and 'How' of AI without getting lost in the technical noise.
+              </p>
+              <div className="flex gap-2 flex-wrap mb-8">
+                {['AI', 'Fundamentals', 'Ethics', 'Strategy'].map((tag) => (
+                  <span key={tag} className="font-inter text-[12px] text-[#94A3B8] bg-[rgba(255,255,255,0.05)] px-2 py-1 rounded">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="mt-auto">
+                <a href="https://ai-basics.bhramaastra.com" target="_blank" rel="noopener noreferrer" className="btn-gold !font-bold w-full text-center inline-block">
+                  Access Free →
+                </a>
+                <p className="font-inter text-[12px] text-[#64748B] text-center mt-3">
+                  Opens the Interactive Foundation in a new tab.
+                </p>
+              </div>
+            </motion.div>
+
             {/* Programme 1 - LIVE */}
             <motion.div initial="hidden" whileInView="visible" viewport={{ once:true }} variants={fadeUp} className="glass-card p-8 rounded-2xl border-[1.5px] border-[#C9A84C] relative flex flex-col">
               <div className="mb-6 flex justify-start">
