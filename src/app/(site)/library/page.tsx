@@ -113,7 +113,7 @@ export default function LibraryPage() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.4, delay: i * 0.08 }}
-                    className="glass-card p-8 flex flex-col rounded-2xl group transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.15)]"
+                    className="glass-card p-8 flex flex-col rounded-2xl group transition-all duration-300 hover:shadow-[0_0_30px_rgba(201,168,76,0.15)] overflow-hidden"
                   >
                     <div className="flex justify-between items-start mb-6">
                       <div className="glass-card px-3 py-1 rounded-full flex items-center justify-center">
@@ -132,8 +132,8 @@ export default function LibraryPage() {
                     </p>
 
                     {res.badge && (
-                      <div className="glass-card px-4 py-2 rounded mb-6 w-max border-[rgba(255,255,255,0.08)]">
-                        <span className="font-inter text-[12px] text-[#E2E8F0] tracking-wide">{res.badge}</span>
+                      <div className="glass-card px-4 py-2 rounded mb-6 max-w-full border-[rgba(255,255,255,0.08)]">
+                        <span className="font-inter text-[12px] text-[#E2E8F0] tracking-wide block leading-relaxed break-words">{res.badge}</span>
                       </div>
                     )}
 

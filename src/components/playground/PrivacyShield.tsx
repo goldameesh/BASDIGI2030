@@ -37,7 +37,7 @@ export default function PrivacyShield() {
       
       <div className="mt-6 pt-6 border-t border-[rgba(255,255,255,0.05)] text-center">
         <p className="font-inter text-[11px] text-[#64748B]">
-          Verified by BAS Intelligence Governance · UAE Federal Decree-Law No. 45-2021 Compliant
+          Verified by BAS Intelligence Governance · Privacy-first-design with zero data retention
         </p>
       </div>
     </motion.div>

@@ -34,3 +34,5 @@
 | **13**| 2026-04-19 12:41 | Playground Build Complete | Implementation | [x] | Local verification successful. High-fidelity preview generated. |
 | **13.1**| 2026-04-19 13:23 | UI Refinements & Branding Fix | Enhancement | [x] | Added Maturity Index, Stars, and Favicon/OG metadata. |
 | **14**| 2026-04-19 13:31 | Version 1.1 Live Deployment | Deployment | [x] | **Insight Forge Live** at bhramaastra.com/playground. |
+| **15**| 2026-04-19 15:52 | AI Basics Native Integration & Core 4 Cleanup | Implementation | [x] | Pruned Library to 4 resources and fixed DecisionMine UI overflow. |
+| **16**| 2026-04-19 16:18 | Final Refinements & Copy Polish | Enhancement | [x] | Rephrased Playground privacy and hardened Library card layout. |

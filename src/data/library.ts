@@ -42,40 +42,14 @@ export const libraryResources: LibraryResource[] = [
   {
     id: 'ai-basics',
     title: "AI Basics for Professionals",
-    subtitle: "BAS Academy · Interactive Foundation",
-    description: "A fast-paced, jargon-free introduction to Artificial Intelligence. Built for executives and teams who need to understand the 'Why' and 'How' of AI without getting lost in the technical noise.",
+    subtitle: "The Foundation of AI-Native Leadership",
+    description: "The definitive entry point for visionary partners. A fast-paced, jargon-free interactive trajectory designed for executives who demand absolute clarity on the 'Why' and 'How' of cognitive transformation.",
     category: 'Academy',
     url: 'https://ai-basics.bhramaastra.com',
     isExternal: true,
     isFree: true,
     badge: 'Bilingual · Quick Start · Interactive',
     tags: ['AI', 'Fundamentals', 'Ethics', 'Strategy'],
-    addedDate: '2025'
-  },
-  {
-    id: 'ai-basics',
-    title: "AI Basics for Professionals",
-    subtitle: "BAS Academy · Interactive Foundation",
-    description: "A fast-paced, jargon-free introduction to Artificial Intelligence. Built for executives and teams who need to understand the 'Why' and 'How' of AI without getting lost in the technical noise.",
-    category: 'Academy',
-    url: 'https://ai-basics.bhramaastra.com',
-    isExternal: true,
-    isFree: true,
-    badge: 'Bilingual · Quick Start · Interactive',
-    tags: ['AI', 'Fundamentals', 'Ethics', 'Strategy'],
-    addedDate: '2025'
-  },
-  {
-    id: 'bas-academy-portal',
-    title: "BAS Academy Portal",
-    subtitle: "The Hub of Elite AI Leadership",
-    description: "Access the full curriculum of Bhramaastra Academy. Practical, founder-led programs designed to build AI-native capability in teams and leaders across the region.",
-    category: 'Academy',
-    url: '/academy',
-    isExternal: false,
-    isFree: true,
-    badge: 'Bilingual · Executive Curriculum',
-    tags: ['Academy', 'Education', 'Leadership', 'AI Strategy'],
     addedDate: '2025'
   },
   {
@@ -87,7 +61,7 @@ export const libraryResources: LibraryResource[] = [
     url: 'https://firstcircle.bhramaastra.com',
     isExternal: true,
     isFree: true,
-    badge: '15 Analytical Layers · GO · PILOT · CAUTION · STOP',
+    badge: '15 Analytical Layers · First Circle Access',
     tags: ['AI', 'Decision Intelligence', 'Strategy', 'Leadership'],
     addedDate: '2026'
   }

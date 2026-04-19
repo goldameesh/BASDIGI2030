@@ -155,10 +155,10 @@ export default function AcademyPage() {
               </div>
               <h3 className="font-playfair text-[24px] text-white font-semibold mb-3">AI Basics for Professionals</h3>
               <p className="font-inter text-[15px] text-[#CBD5E1] leading-[1.7] mb-6 flex-1">
-                A fast-paced, jargon-free introduction to Artificial Intelligence. Built for executives and teams who need to understand the 'Why' and 'How' of AI without getting lost in the technical noise.
+                The definitive entry point for visionary partners. A fast-paced, jargon-free interactive trajectory designed for executives who demand absolute clarity on the &apos;Why&apos; and &apos;How&apos; of cognitive transformation.
               </p>
               <div className="flex gap-2 flex-wrap mb-8">
-                {['AI', 'Fundamentals', 'Ethics', 'Strategy'].map((tag) => (
+                {['Interactive', 'Bilingual', 'Foundation', 'Free'].map((tag) => (
                   <span key={tag} className="font-inter text-[12px] text-[#94A3B8] bg-[rgba(255,255,255,0.05)] px-2 py-1 rounded">
                     {tag}
                   </span>
@@ -166,7 +166,7 @@ export default function AcademyPage() {
               </div>
               <div className="mt-auto">
                 <a href="https://ai-basics.bhramaastra.com" target="_blank" rel="noopener noreferrer" className="btn-gold !font-bold w-full text-center inline-block">
-                  Access Free →
+                  Access Foundation →
                 </a>
                 <p className="font-inter text-[12px] text-[#64748B] text-center mt-3">
                   Opens the Interactive Foundation in a new tab.
