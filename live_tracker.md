@@ -33,3 +33,4 @@
 | **12.2**| 2026-04-19 12:32 | Delta Verification Active | Protocol | [x] | Mandatory delta-check of tracker/memory upon request. |
 | **13**| 2026-04-19 12:41 | Playground Build Complete | Implementation | [x] | Local verification successful. High-fidelity preview generated. |
 | **13.1**| 2026-04-19 13:23 | UI Refinements & Branding Fix | Enhancement | [x] | Added Maturity Index, Stars, and Favicon/OG metadata. |
+| **14**| 2026-04-19 13:31 | Version 1.1 Live Deployment | Deployment | [x] | **Insight Forge Live** at bhramaastra.com/playground. |

@@ -50,7 +50,6 @@ export default function CognitivePlayground() {
   }, [activeDeck, answers]);
 
   // 3. Verdict Synthesis (Non-Repetitive Logic)
-  const isVerdictStep = step === 'verdict';
   const synthesis = useMemo(() => {
     const verdictPool = INSIGHT_FRAGMENTS.filter(f => f.type === 'Verdict');
     const advisoryPool = INSIGHT_FRAGMENTS.filter(f => f.type === 'Advisory');
@@ -61,7 +60,7 @@ export default function CognitivePlayground() {
       advisory: advisoryPool[Math.floor(Math.random() * advisoryPool.length)].text,
       move: movePool[Math.floor(Math.random() * movePool.length)].text
     };
-  }, [isVerdictStep]);
+  }, []);
 
   return (
     <div className="w-full max-w-5xl mx-auto px-6 py-12 relative min-h-[600px] flex flex-col justify-center">

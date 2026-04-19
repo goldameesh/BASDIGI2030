@@ -22,12 +22,17 @@ These rules are non-negotiable for all future versions to maintain brand soverei
 | **Aesthetics** | Cinematic, WebGL-enhanced, glassmorphism, magnetic interactions |
 | **Tone of Voice**| Institutional, commanding, warm, advisory (never "salesy") |
 
-## 🛠️ Technical Stack (The Engine)
-*   **Framework:** Next.js 14 (App Router)
-*   **Language:** TypeScript
-*   **Styling:** Tailwind CSS + Vanilla CSS (for marble/glass effects)
-*   **Animation:** Framer Motion + React Three Fiber (WebGL)
-*   **Deployment:** GitHub Push → **Netlify** CI/CD → Custom Domain
+## 📦 Version History & Manifests
+
+### [1.1] "The Insight Forge" (Current) - 2026-04-19
+*   **Feature:** Professional Cognitive Playground (`/playground`).
+*   **Logic:** Dynamic Brain (Non-repetitive diagnostic engine).
+*   **Branding:** Explicit Favicon and OpenGraph metadata implemented.
+*   **Security:** 100% Anonymous/Zero-Trace protocols active.
+
+### [1.0] "Sovereign Launch" - 2026-04-19
+*   **Baseline:** 9 core routes (Home, About, Services, Ecosystem, Library, Academy, DecisionMine, Contact, Legal).
+*   **Infrastructure:** GitHub -> Netlify CI/CD with Atomic Deploys.
 *   **Lead Capture:** Formspree (Endpoints: `xbdqonrw` for Contact, `xrerkgvj` for Academy)
 
 ## 🏆 Version 1 Milestones (The History)

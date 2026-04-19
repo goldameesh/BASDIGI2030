@@ -2,10 +2,10 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Playfair_Display } from 'next/font/google';
+import Image from 'next/image';
 
 const Playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'] });
-const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
 
 // ◈ Atmospheric "Digital Silk" Particles ◈
 const AtmosphericShards = () => {
@@ -13,8 +13,8 @@ const AtmosphericShards = () => {
     useEffect(() => {
         const canvas = canvasRef.current; if(!canvas) return;
         const ctx = canvas.getContext('2d'); if(!ctx) return;
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
         
         const pArr = Array.from({length: 120}).map(() => ({ 
             x: Math.random() * width, 
@@ -75,11 +75,12 @@ export default function TeaserEngine() {
 
             {/* ◈ BRAND LAYER: Ghost Watermark (Top-Right) ◈ */}
             <div className="absolute top-8 right-8 z-30 opacity-54">
-                <div className="w-32 h-32 overflow-hidden rounded-[16px]">
-                    <img 
+                <div className="relative w-32 h-32 overflow-hidden rounded-[16px]">
+                    <Image 
                         src="/videos/teaser-logo.png" 
                         alt="BAS Logo" 
-                        className="w-full h-full object-contain"
+                        fill
+                        className="object-contain"
                     />
                 </div>
             </div>

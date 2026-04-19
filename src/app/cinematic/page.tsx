@@ -2,12 +2,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Playfair_Display, Inter, Alex_Brush, Montserrat } from 'next/font/google';
+import { Playfair_Display, Alex_Brush } from 'next/font/google';
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 
 const Playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '700', '900'] });
-const inter = Inter({ subsets: ['latin'], weight: ['400', '700'] });
-const montserrat = Montserrat({ subsets: ['latin'], weight: ['400', '700'] });
 const AlexBrush = Alex_Brush({ subsets: ['latin'], weight: ['400'] });
 
 const WebGLBackground = dynamic(() => import('@/components/hero/WebGLBackground'), { ssr: false });
@@ -22,8 +21,9 @@ const ThirdBrainMesh = () => {
         "Stakeholder Map", "Time Horizon"
     ];
 
-    const [isVisible, setIsVisible] = useState(false);
-    useEffect(() => setIsVisible(true), []);
+    useEffect(() => {
+        // Initialization logic if needed
+    }, []);
 
     return (
         <div className="relative w-[800px] h-[800px] flex items-center justify-center">
@@ -82,8 +82,8 @@ const GoldenDust = () => {
     useEffect(() => {
         const canvas = canvasRef.current; if(!canvas) return;
         const ctx = canvas.getContext('2d'); if(!ctx) return;
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
         const pArr = Array.from({length: 80}).map(() => ({ x: Math.random() * width, y: Math.random() * height, size: Math.random() * 3 + 1, speedX: (Math.random() - 0.5) * 1.5, speedY: (Math.random() - 0.5) * 0.5 - 0.5, opacity: Math.random() }));
         const draw = () => {
             ctx.clearRect(0, 0, width, height);
@@ -117,8 +117,8 @@ const ConfettiShower = () => {
     useEffect(() => {
         const canvas = canvasRef.current; if(!canvas) return;
         const ctx = canvas.getContext('2d'); if(!ctx) return;
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        const width = canvas.width = window.innerWidth;
+        const height = canvas.height = window.innerHeight;
         const pArr = Array.from({length: 150}).map(() => ({ x: Math.random() * width, y: Math.random() * height - height, size: Math.random() * 5 + 2, color: Math.random() > 0.6 ? '#C9A84C' : '#FFFFFF', speed: Math.random() * 2 + 0.5, r: Math.random() * 360, rs: Math.random() * 2 - 1 }));
         const draw = () => {
             ctx.clearRect(0, 0, width, height);
@@ -134,7 +134,7 @@ const ConfettiShower = () => {
 }
 
 const MatrixRain = () => {
-    const [rainData, setRainData] = useState<any[]>([]);
+    const [rainData, setRainData] = useState<{id: number, delay: number, dur: number, x: number}[]>([]);
     useEffect(() => setRainData(Array.from({length: 20}).map((_, i) => ({ id: i, delay: Math.random() * 5, dur: Math.random() * 10 + 10, x: i * 5 }))), []);
     return (
         <div className="absolute inset-0 opacity-10 pointer-events-none z-0 overflow-hidden">
@@ -286,7 +286,12 @@ export default function MasterCeremonyReveal() {
                                 <div className="w-[300px] h-[300px] relative">
                                     <motion.div animate={{ rotate: 360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }} className="absolute inset-0 border-[4px] border-[#C9A84C] clip-hexagon shadow-[0_0_40px_#C9A84C]" />
                                     <div className="absolute inset-[8px] bg-[#0B1B4D] clip-hexagon overflow-hidden">
-                                        <img src="/images/founder/amish-shah.jpg" alt="Amish Shah" className="w-full h-full object-cover scale-110" />
+                                        <Image 
+                                            src="/images/founder/amish-shah.jpg" 
+                                            alt="Amish Shah" 
+                                            fill
+                                            className="object-cover scale-110" 
+                                        />
                                     </div>
                                 </div>
                                 <div className="flex flex-col items-center md:items-start">
