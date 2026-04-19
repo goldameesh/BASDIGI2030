@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAS 2.0 | Grand Opening Reveal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0B1B4D;
+            --gold: #C9A84C;
+            --gold-bright: #F6E27A;
+            --marble: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--navy);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Golden Matrix Background */
+        #matrix {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        #cinematic-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1000px;
+        }
+
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+            pointer-events: none;
+            text-align: center;
+        }
+
+        .scene.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+
+        /* Oscar Style Titles */
+        .gold-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: linear-gradient(to right, #462523 0%, #cb9b51 22%, #f6e27a 45%, #f6f2c0 50%, #f6e27a 55%, #cb9b51 78%, #462523 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.3));
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .label-institutional {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5em;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .sub-reveal {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            font-style: italic;
+            opacity: 0.7;
+        }
+
+        /* UI Showcases */
+        .ui-frame {
+            width: 80%;
+            max-width: 1000px;
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 100px rgba(201,168,76,0.1);
+            overflow: hidden;
+            transform: rotateX(10deg);
+            transition: transform 10s linear;
+        }
+
+        .active .ui-frame {
+            transform: rotateX(0deg) scale(1.05);
+        }
+
+        .ui-frame img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Domain Pivot Animation */
+        .url-box {
+            font-family: 'Inter', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: white;
+            padding: 1rem 3rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .old-url {
+            text-decoration: line-through;
+            opacity: 0.4;
+            font-size: 1.4rem;
+        }
+
+        .new-url {
+            color: var(--gold-bright);
+            text-shadow: 0 0 20px rgba(201,168,76,0.5);
+        }
+
+        /* Final Invitation */
+        .invitation-text {
+            max-width: 700px;
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #E2E8F0;
+            margin-bottom: 3rem;
+        }
+
+        .btn-ready {
+            padding: 1.2rem 3rem;
+            background: var(--gold);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .btn-ready:hover {
+            box-shadow: 0 0 30px var(--gold);
+            transform: translateY(-5px);
+        }
+
+        /* Audio Controls Overlay */
+        #audio-hint {
+            position: absolute;
+            bottom: 40px;
+            padding: 10px 20px;
+            background: rgba(201, 168, 76, 0.2);
+            border: 1px solid var(--gold);
+            border-radius: 30px;
+            font-size: 12px;
+            color: var(--gold);
+            z-index: 100;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="matrix"></canvas>
+
+    <div id="audio-hint" onclick="startReveal()">CLICK TO START THE GRAND OPENING</div>
+
+    <div id="cinematic-container">
+        
+        <!-- ACT 1: THE REVEAL -->
+        <div class="scene active" id="scene-1">
+            <span class="label-institutional">BHRAMAASTRA ADVISORY SERVICES</span>
+            <h1 class="gold-title">BASDIGI 2030</h1>
+            <span class="sub-reveal">Revealing 2.0</span>
+        </div>
+
+        <!-- ACT 2: THE DOMAIN PIVOT -->
+        <div class="scene" id="scene-2">
+            <span class="label-institutional">THE ARCHITECTURE OF INTENT</span>
+            <div class="url-box">
+                <span class="old-url">bhramaastraadvisory.com</span>
+                <span>→</span>
+                <span class="new-url">bhramaastra.com</span>
+            </div>
+            <p style="margin-top:2rem; font-style:italic; opacity:0.6;">A sharper focus. Absolute certainty.</p>
+        </div>
+
+        <!-- ACT 3: THE FOUNDRY -->
+        <div class="scene" id="scene-3">
+            <span class="label-institutional">BAS FOUNDRY</span>
+            <h2 class="gold-title" style="font-size: 3rem;">Precision Digital Forging</h2>
+            <div class="ui-frame">
+                <img src="/cinematic/ecosystem.png" alt="Foundry">
+            </div>
+        </div>
+
+        <!-- ACT 4: THE ACADEMY -->
+        <div class="scene" id="scene-4">
+            <span class="label-institutional">BAS ACADEMY</span>
+            <h2 class="gold-title" style="font-size: 3rem;">Building AI-Native Teams</h2>
+            <div class="ui-frame">
+                <img src="/cinematic/academy.png" alt="Academy">
+            </div>
+        </div>
+
+        <!-- ACT 5: THE ADVISORY -->
+        <div class="scene" id="scene-5">
+            <span class="label-institutional">BAS ADVISORY</span>
+            <h2 class="gold-title" style="font-size: 3rem;">Institutional Intelligence</h2>
+            <div class="ui-frame">
+                <img src="/cinematic/decisionmine.png" alt="DecisionMine">
+            </div>
+        </div>
+
+        <!-- ACT 6: THE FINAL INVITATION -->
+        <div class="scene" id="scene-6">
+            <h1 class="gold-title" style="font-size: 3.5rem;">ELEVATE YOUR NARRATIVE.<br>SECURE YOUR FUTURE.</h1>
+            <p class="invitation-text">
+                We invite visionary partners to experience the 100X Intent and AI-led certainty of BAS 2.0. Join the pivot in your respective field today.
+            </p>
+            <a href="https://bhramaastra.com" class="btn-ready">VISIT BHRAMAASTRA.COM</a>
+        </div>
+
+    </div>
+
+    <!-- AUDIO ELEMENTS -->
+    <audio id="bg-music" src="bas_lyrics.mp3"></audio>
+
+    <script>
+        // Matrix Effect
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const symbols = "01BHRAMAASTRA✦◈◉◇◆ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ".split("");
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const drops = Array(Math.floor(columns)).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(11, 27, 77, 0.15)'; 
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.shadowBlur = 4;
+            ctx.shadowColor = '#C9A84C';
+            ctx.fillStyle = '#C9A84C'; 
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = symbols[Math.floor(Math.random() * symbols.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        setInterval(drawMatrix, 35);
+
+        let currentScene = 0;
+        const scenes = document.querySelectorAll('.scene');
+        const totalScenes = scenes.length;
+
+        function startReveal() {
+            document.getElementById('audio-hint').style.display = 'none';
+            const audio = document.getElementById('bg-music');
+            if(audio) audio.play();
+
+            setInterval(() => {
+                scenes[currentScene].classList.remove('active');
+                currentScene = (currentScene + 1) % totalScenes;
+                scenes[currentScene].classList.add('active');
+            }, 7000);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

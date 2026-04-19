@@ -1,13 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
-import CustomCursor from '@/components/CustomCursor'
-import ScrollProgress from '@/components/ScrollProgress'
-import Navbar from '@/components/Navbar'
-import PageTransition from '@/components/PageTransition'
-import FloatingWhatsApp from '@/components/FloatingWhatsApp'
-import LoadingScreen from '@/components/LoadingScreen'
-import Footer from '@/components/Footer'
 import { GoldProvider } from '@/context/GoldContext'
 
 const playfair = Playfair_Display({ 
@@ -26,7 +19,37 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Bhramaastra Advisory Services',
-  description: 'One Partner, Infinite Solutions. Quietly redesigning ESG, GRC, SOPs & Transformation for purpose-driven institutions.',
+  description: 'One Partner, Infinite Solutions. Quitely redesigning ESG, GRC, SOPs & Transformation for purpose-driven institutions.',
+  metadataBase: new URL('https://bhramaastra.com'),
+  icons: {
+    icon: [
+      { url: '/images/brand/bas-logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/images/brand/bas-logo.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/brand/bas-logo.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  openGraph: {
+    title: 'Bhramaastra Advisory Services',
+    description: 'One Partner, Infinite Solutions. Precision-engineered advisory for visionary leaders.',
+    url: 'https://bhramaastra.com',
+    siteName: 'Bhramaastra Advisory Services',
+    images: [{
+      url: '/og-image.png',
+      width: 1200,
+      height: 630,
+      alt: 'BAS Branding'
+    }],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bhramaastra Advisory Services',
+    description: 'Precision-engineered advisory for visionary leaders.',
+    images: ['/og-image.png'],
+  },
 }
 
 export const viewport: Viewport = {
@@ -44,17 +67,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className={`${playfair.variable} ${inter.variable} antialiased bg-royal-blue-deep text-soft-white selection:bg-gold-primary selection:text-royal-blue-dark relative w-full overflow-x-hidden min-h-screen flex flex-col`}>
         <GoldProvider>
-          <LoadingScreen />
-          <ScrollProgress />
-          <CustomCursor />
-          <Navbar />
-          <div className="flex-1 w-full relative">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </div>
-          <FloatingWhatsApp />
-          <Footer />
+          {children}
         </GoldProvider>
       </body>
     </html>

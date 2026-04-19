@@ -20,6 +20,7 @@ export default function Navbar() {
     { name: 'Ecosystem', href: '/ecosystem' },
     { name: 'Free Library', href: '/library' },
     { name: 'Academy', href: '/academy' },
+    { name: 'Playground', href: '/playground' },
     { name: 'DecisionMine', href: '/decisionmine' },
     { name: 'Contact', href: '/contact' }
   ];
