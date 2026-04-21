@@ -13,10 +13,26 @@ const iconMap = {
   investor: TrendingUp,
 };
 
+import JSONLD from '@/components/JSONLD';
+import { Metadata } from 'next';
+
 export function generateStaticParams() {
   return servicesData.map((service) => ({
     slug: service.slug,
   }));
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = servicesData.find((s) => s.slug === params.slug);
+  if (!service) return {};
+
+  return {
+    title: service.name,
+    description: service.gridBody,
+    alternates: {
+      canonical: `/services/${service.slug}`,
+    },
+  };
 }
 
 export default function ServicePage({ params }: { params: { slug: string } }) {
@@ -27,9 +43,38 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   }
 
   const IconComp = iconMap[service.slug as keyof typeof iconMap];
+  
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.gridBody,
+    provider: {
+      '@type': 'Organization',
+      name: 'Bhramaastra Advisory Services',
+      url: 'https://bhramaastra.com'
+    },
+    areaServed: ['UAE', 'GCC', 'Global'],
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://bhramaastra.com/services/${service.slug}`
+    }
+  }
 
   return (
     <main className="w-full flex-col flex overflow-hidden bg-[#0B1B4D]">
+      <JSONLD data={serviceSchema} id={`service-schema-${service.slug}`} />
+      
+      {/* AI-Eyes Only GEO Summary */}
+      <div className="sr-only" aria-hidden="true">
+        <section>
+          <h2>{service.name} | Bhramaastra Advisory Services</h2>
+          <p>{service.fullBody}</p>
+          <ul>
+            {service.deliverables.map((d, i) => <li key={i}>{d}</li>)}
+          </ul>
+        </section>
+      </div>
       
       {/* ================= HERO ================= */}
       <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-[#0B1B4D] to-[#091540]">

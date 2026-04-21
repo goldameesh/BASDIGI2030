@@ -2,6 +2,28 @@ import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Inter } from 'next/font/google'
 import './globals.css'
 import { GoldProvider } from '@/context/GoldContext'
+import JSONLD from '@/components/JSONLD'
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Bhramaastra Advisory Services',
+  alternateName: 'BAS',
+  url: 'https://bhramaastra.com',
+  logo: 'https://bhramaastra.com/images/brand/bas-logo.png',
+  sameAs: [
+    'https://linkedin.com/company/bhramaastra',
+    'https://youtube.com/@bhramaastra',
+    'https://wa.me/971504090727'
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Dubai',
+    addressCountry: 'UAE'
+  },
+  description: 'Precision-engineered advisory for purpose-driven institutions. Specialist GRC, ESG, and Strategic Transformation advisory.',
+  areaServed: ['UAE', 'GCC', 'Middle East', 'Global']
+}
 
 const playfair = Playfair_Display({ 
   subsets: ['latin'],
@@ -18,9 +40,15 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bhramaastra Advisory Services',
-  description: 'One Partner, Infinite Solutions. Quitely redesigning ESG, GRC, SOPs & Transformation for purpose-driven institutions.',
+  title: {
+    default: 'Bhramaastra Advisory Services | Private Institutional Advisory',
+    template: '%s | BAS'
+  },
+  description: 'Precision-engineered advisory for purpose-driven institutions. Redesigning ESG, GRC, and Strategic Transformation across 12+ countries.',
   metadataBase: new URL('https://bhramaastra.com'),
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: [
       { url: '/images/brand/bas-logo.png', sizes: '32x32', type: 'image/png' },
@@ -32,7 +60,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Bhramaastra Advisory Services',
-    description: 'One Partner, Infinite Solutions. Precision-engineered advisory for visionary leaders.',
+    description: 'Precision-engineered advisory for purpose-driven institutions. World-class ESG, GRC, and Transformation strategy.',
     url: 'https://bhramaastra.com',
     siteName: 'Bhramaastra Advisory Services',
     images: [{
@@ -66,6 +94,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${playfair.variable} ${inter.variable} antialiased bg-royal-blue-deep text-soft-white selection:bg-gold-primary selection:text-royal-blue-dark relative w-full overflow-x-hidden min-h-screen flex flex-col`}>
+        <JSONLD data={organizationSchema} id="org-schema" />
         <GoldProvider>
           {children}
         </GoldProvider>

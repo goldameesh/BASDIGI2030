@@ -1,4 +1,10 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Compliance with UAE Federal Decree-Law No. 45 of 2021 on Personal Data Protection. Understanding how BAS protects your institutional intelligence.',
+}
 
 export default function PrivacyPage() {
   return (

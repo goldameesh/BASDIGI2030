@@ -1,4 +1,10 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms of Use',
+  description: 'Governance and terms of engagement for the Bhramaastra Advisory Services digital intelligence hub. Institutional-grade advisory standards.',
+}
 
 export default function TermsPage() {
   return (

@@ -1,4 +1,10 @@
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Legal Disclaimer',
+  description: 'Clarifying the advisory nature of Bhramaastra Advisory Services. Institutional intelligence and professional judgment boundaries.',
+}
 
 export default function DisclaimerPage() {
   return (
